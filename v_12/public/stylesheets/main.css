@@ -1,0 +1,39 @@
+.thumbnail img{
+	width: 100%;
+}
+
+.thumbnail {
+	padding: 0;
+}
+
+#delete-form {
+	display: inline;
+}
+
+.jumbotron { 
+	background: url(https://upload.wikimedia.org/wikipedia/commons/7/7a/Tatra_Mountains_banner.jpg);
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 0;
+    height: 20%;
+    text-align: center;
+	box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 
+                0 4px 25px 0px rgba(0, 0, 0, 0.12), 
+                0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+ 
+.thumbnail {
+    padding: 0;
+    padding-bottom: 5px;
+    border: none;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 
+                0 4px 25px 0px rgba(0, 0, 0, 0.12), 
+                0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 996px) {
+    .gallery img {
+        height: 200px;
+        width: auto;
+    }
+}
