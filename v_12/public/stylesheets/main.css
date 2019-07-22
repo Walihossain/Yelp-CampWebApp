@@ -11,11 +11,12 @@
 }
 
 .jumbotron { 
-	background: url(https://upload.wikimedia.org/wikipedia/commons/7/7a/Tatra_Mountains_banner.jpg);
+	background: url(https://dak95nwic4sny.cloudfront.net/73/canada-33723235-1468496086-ImageGalleryLightboxLarge.jpg);
     background-position: center;
     background-size: cover;
     margin-bottom: 0;
     height: 20%;
+	color: #FFFFFF;
     text-align: center;
 	box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 
                 0 4px 25px 0px rgba(0, 0, 0, 0.12), 
