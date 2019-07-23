@@ -9,9 +9,21 @@ var seedDB = require("./seeds.js");
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended : true}));
 
+
 // Connecting to MongoDB
 var mongoose    = require("mongoose"); // added as part of intalling mongoose and connecting to MongoDB for yelpcamp
-mongoose.connect('mongodb://localhost:27017/yelp_camp_v11', { useNewUrlParser: true }); // this creates yelpcamp database in MongoDB 
+
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v12"; //when run locally DATBASEURL is emply or url = the local url link
+mongoose.connect(url, { useNewUrlParser: true });// this creates yelpcamp database in MongoDB Cloud Atlas 
+
+// process.env.DATABASEURL is an enviroment variable fed by the environment the code is being run on. 
+//console.log(process.env.DATABASEURL);
+// DATABASE variable for heroku is saved in the Config Var section of the heroku ui page, which populates DATABASEURL with the below link from cloubatlas
+
+//export DATABASEURL = "'mongodb://localhost:27017/yelp_camp_v12'" //this line neeeds to added to the local env using cmd
+//mongoose.connect('mongodb://localhost:27017/yelp_camp_v12', { useNewUrlParser: true });
+//mongoose.connect("mongodb+srv://wnh149dB:149mongoYelp@yelpcampcluster-vkazf.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true });
+
 
 // importing Camground Schema in the models folder using module.exports =  
 var Campground = require("./models/campgrounds.js");
@@ -27,15 +39,10 @@ var flash = require("connect-flash");
 // asking express to use flash 
 app.use(flash());
 
-
-
 // requiring routes - entered after refactoring 
 var campgroundRoutes = 	require("./routes/campgrounds.js");
 var commentRoutes 	 = 	require("./routes/comments.js");
 var indexRoutes 	 = 	require("./routes/index.js");
-
-
-
 
 
 //+++++++++++++++++++++++++++++++++++
@@ -82,17 +89,17 @@ app.use(express.static(__dirname + "/public"));
 // asking express to use method override 
 app.use(methodOverride("_method"));
 
-
-
-
-
 // The below lines tells express to use the routes, using the router inside the routes dir.  
 app.use(campgroundRoutes);
 app.use(commentRoutes);
 app.use(indexRoutes);
 
-
 // SERVER 
-app.listen(3000, function(req,res){
-	console.log("The yelpCamp Server is up");
+// app.listen(3000, function(req,res){
+// 	console.log("The yelpCamp Server is up");
+// });
+
+var port = process.env.PORT || 3000;
+app.listen(port, function () {
+    console.log("YelpCamp server Has Started!");
 });
